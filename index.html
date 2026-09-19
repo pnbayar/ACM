@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Automation And Configuration Management · NITTE</title>
-<meta name="description" content="Course page for 24PCA412 Automation And Configuration Management (Windows PowerShell, Azure Automation, DSC) — NITTE, BCA (Honours).">
+<meta name="description" content="Course page for Automation And Configuration Management (24PCA412 and 25BCACT314) (Windows PowerShell, Azure Automation, DSC) — NITTE, BCA (Honours).">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230a0e14'/%3E%3Cpath d='M7 9l9 7-9 7' fill='none' stroke='%233a96dd' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M17 23h9' stroke='%236a9955' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -251,7 +251,21 @@
 
   ::-webkit-scrollbar{height:8px; width:8px;}
   ::-webkit-scrollbar-thumb{background:var(--border); border-radius:4px;}
+  [hidden]{display:none !important;}
+  .sep{border-left:1px solid var(--border);}
+
+  /* ---- syllabus switcher (needs JS, so it stays hidden without it) ---- */
+  .switch{display:none; gap:6px; flex-wrap:wrap; margin:0 0 16px;}
+  .js .switch{display:flex;}
+  .switch button{
+    font:inherit; font-size:12.5px; cursor:pointer;
+    padding:7px 12px; border-radius:5px;
+    border:1px solid var(--border); background:var(--panel); color:var(--muted);
+  }
+  .switch button:hover{color:var(--text);}
+  .switch button[aria-pressed="true"]{border-color:var(--ps-blue); background:var(--panel-alt); color:var(--text);}
 </style>
+<script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
 
@@ -263,19 +277,32 @@
     </div>
     <h1 class="title">Automation And Configuration Management</h1>
     <div class="subtitle">Windows PowerShell · Azure Automation · Desired State Configuration</div>
+    <div class="switch" role="group" aria-label="Syllabus version">
+      <button type="button" data-pick="24PCA412" aria-pressed="true">24PCA412 · 2022 batch</button>
+      <button type="button" data-pick="25BCACT314" aria-pressed="false">25BCACT314 · new batch</button>
+    </div>
     <div class="status-row">
       <span><span class="dot"></span>session connected</span>
-      <span>course&nbsp;24PCA412</span>
-      <span>type&nbsp;MNC · minor</span>
-      <span>credits&nbsp;3</span>
+      <span data-course="24PCA412">course&nbsp;24PCA412</span>
+      <span data-course="24PCA412">type&nbsp;MNC · minor</span>
+      <span data-course="24PCA412">credits&nbsp;3</span>
+      <span data-course="25BCACT314" hidden>course&nbsp;25BCACT314</span>
+      <span data-course="25BCACT314" hidden>type&nbsp;MNC · minor</span>
+      <span data-course="25BCACT314" hidden>credits&nbsp;3</span>
     </div>
-    <div class="metastrip">
+    <div class="metastrip" data-course="24PCA412">
       <div><span>Teaching Hrs (L:T:P)</span><strong>3 : 0 : 2</strong></div>
-      <div><span>Total Hours</span><strong>30 + 0 + 30</strong></div>
+      <div><span>Total Hours</span><strong>45 + 0 + 30</strong></div>
       <div><span>CIE + SEE Marks</span><strong>50 + 50 = 100</strong></div>
       <div><span>Course Type</span><strong>MNC</strong></div>
     </div>
-    <nav class="tabs">
+    <div class="metastrip" data-course="25BCACT314" hidden>
+      <div><span>Teaching Hrs (L-T-P-J)</span><strong>2 : 0 : 2 : 0</strong></div>
+      <div><span>Total Hours (L-T-P-J)</span><strong>30 + 0 + 30 + 0</strong></div>
+      <div><span>CIE + SEE Marks</span><strong>50 + 50 = 100</strong></div>
+      <div><span>Course Type</span><strong>MNC</strong></div>
+    </div>
+    <nav class="tabs" data-course="24PCA412">
       <a href="#preamble">Preamble</a>
       <a href="#outcomes">Outcomes</a>
       <a href="#mapping">PO–CO Map</a>
@@ -284,10 +311,19 @@
       <a href="#evaluation">Evaluation</a>
       <a href="#resources">Resources</a>
     </nav>
+    <nav class="tabs" data-course="25BCACT314" hidden>
+      <a href="#objectives">Objectives</a>
+      <a href="#outcomes">Outcomes</a>
+      <a href="#mapping-new">PO–CO Map</a>
+      <a href="#modules-new">Units</a>
+      <a href="#practicals">Practicals</a>
+      <a href="#evaluation-new">Evaluation</a>
+      <a href="#resources">Resources</a>
+    </nav>
   </div>
 </div>
 
-<section id="preamble">
+<section id="preamble" data-course="24PCA412">
   <div class="wrap">
     <div class="eyebrow">Get-Content</div>
     <h2>Preamble</h2>
@@ -303,6 +339,26 @@ programming and infrastructure. It covers programming techniques for Azure
 cloud and large-scale distributed systems that form the cloud infrastructure.
 Students gain in-depth, hands-on skills in automation and configuration
 management for Azure services, aligned to the course curriculum.</pre>
+    </div>
+  </div>
+</section>
+
+<section id="objectives" data-course="25BCACT314" hidden>
+  <div class="wrap">
+    <div class="eyebrow">Get-Content</div>
+    <h2>Course Objectives</h2>
+    <div class="section-note">.\objectives.txt</div>
+    <div class="codepanel">
+      <div class="bar"><div class="dots"><span></span><span></span><span></span></div>objectives.txt</div>
+      <pre><span class="c"># Course objectives</span>
+<span class="n">1</span>  With the increasing demand for automation in cloud computing, course of study and its
+   future scope, new trends and topics are developed over the recent year along with
+   upcoming trends that are expected in the future soon.
+<span class="n">2</span>  The <span class="v">Azure</span> cloud platform automation is focused in this course, presents a top to
+   down view of Azure and PowerShell, from application, administration to programming
+   and infrastructure.
+<span class="n">3</span>  It focuses on techniques of programming for Azure cloud and large-scale distribution
+   systems that form the cloud infrastructure.</pre>
     </div>
   </div>
 </section>
@@ -327,7 +383,7 @@ management for Azure services, aligned to the course curriculum.</pre>
   </div>
 </section>
 
-<section id="mapping">
+<section id="mapping" data-course="24PCA412">
   <div class="wrap">
     <div class="eyebrow">Join-Object</div>
     <h2>PO – CO Mapping</h2>
@@ -349,11 +405,33 @@ management for Azure services, aligned to the course curriculum.</pre>
   </div>
 </section>
 
-<section id="modules" class="alt">
+<section id="mapping-new" data-course="25BCACT314" hidden>
+  <div class="wrap">
+    <div class="eyebrow">Join-Object</div>
+    <h2>PO – CO Mapping</h2>
+    <div class="section-note">-- correlation: <span class="badge none">–</span> none &nbsp; <span class="badge low">1</span> low &nbsp; <span class="badge med">2</span> moderate &nbsp; <span class="badge high">3</span> substantial</div>
+    <div class="tablewrap">
+      <table>
+        <thead>
+          <tr><th>CO</th><th class="center">PO1</th><th class="center">PO2</th><th class="center">PO3</th><th class="center">PO4</th><th class="center">PO5</th><th class="center">PO6</th><th class="center">PO7</th><th class="center">PO8</th><th class="center">PO9</th><th class="center">PO10</th><th class="center">PO11</th><th class="center">PO12</th><th class="center sep">PSO1</th><th class="center">PSO2</th><th class="center">PSO3</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="id-cell">CO1</td><td class="center"><span class="badge high">3</span></td><td class="center"><span class="badge med">2</span></td><td class="center"><span class="badge none">–</span></td><td class="center"><span class="badge high">3</span></td><td class="center"><span class="badge none">–</span></td><td class="center"><span class="badge none">–</span></td><td class="center"><span class="badge none">–</span></td><td class="center"><span class="badge none">–</span></td><td class="center"><span class="badge none">–</span></td><td class="center"><span class="badge none">–</span></td><td class="center"><span class="badge none">–</span></td><td class="center"><span class="badge none">–</span></td><td class="center sep"><span class="badge med">2</span></td><td class="center"><span class="badge none">–</span></td><td class="center"><span class="badge med">2</span></td></tr>
+          <tr><td class="id-cell">CO2</td><td class="center"><span class="badge high">3</span></td><td class="center"><span class="badge med">2</span></td><td class="center"><span class="badge none">–</span></td><td class="center"><span class="badge high">3</span></td><td class="center"><span class="badge none">–</span></td><td class="center"><span class="badge none">–</span></td><td class="center"><span class="badge none">–</span></td><td class="center"><span class="badge none">–</span></td><td class="center"><span class="badge none">–</span></td><td class="center"><span class="badge none">–</span></td><td class="center"><span class="badge none">–</span></td><td class="center"><span class="badge none">–</span></td><td class="center sep"><span class="badge med">2</span></td><td class="center"><span class="badge none">–</span></td><td class="center"><span class="badge med">2</span></td></tr>
+          <tr><td class="id-cell">CO3</td><td class="center"><span class="badge high">3</span></td><td class="center"><span class="badge high">3</span></td><td class="center"><span class="badge none">–</span></td><td class="center"><span class="badge high">3</span></td><td class="center"><span class="badge none">–</span></td><td class="center"><span class="badge none">–</span></td><td class="center"><span class="badge none">–</span></td><td class="center"><span class="badge none">–</span></td><td class="center"><span class="badge none">–</span></td><td class="center"><span class="badge none">–</span></td><td class="center"><span class="badge none">–</span></td><td class="center"><span class="badge none">–</span></td><td class="center sep"><span class="badge high">3</span></td><td class="center"><span class="badge none">–</span></td><td class="center"><span class="badge high">3</span></td></tr>
+          <tr><td class="id-cell">CO4</td><td class="center"><span class="badge high">3</span></td><td class="center"><span class="badge high">3</span></td><td class="center"><span class="badge none">–</span></td><td class="center"><span class="badge high">3</span></td><td class="center"><span class="badge none">–</span></td><td class="center"><span class="badge none">–</span></td><td class="center"><span class="badge none">–</span></td><td class="center"><span class="badge none">–</span></td><td class="center"><span class="badge none">–</span></td><td class="center"><span class="badge none">–</span></td><td class="center"><span class="badge none">–</span></td><td class="center"><span class="badge none">–</span></td><td class="center sep"><span class="badge high">3</span></td><td class="center"><span class="badge none">–</span></td><td class="center"><span class="badge med">2</span></td></tr>
+          <tr><td class="id-cell">CO5</td><td class="center"><span class="badge high">3</span></td><td class="center"><span class="badge high">3</span></td><td class="center"><span class="badge none">–</span></td><td class="center"><span class="badge high">3</span></td><td class="center"><span class="badge none">–</span></td><td class="center"><span class="badge none">–</span></td><td class="center"><span class="badge none">–</span></td><td class="center"><span class="badge none">–</span></td><td class="center"><span class="badge none">–</span></td><td class="center"><span class="badge none">–</span></td><td class="center"><span class="badge none">–</span></td><td class="center"><span class="badge none">–</span></td><td class="center sep"><span class="badge high">3</span></td><td class="center"><span class="badge none">–</span></td><td class="center"><span class="badge med">2</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="modules" class="alt" data-course="24PCA412">
   <div class="wrap">
     <div class="eyebrow">Get-Module | Sort-Object Sequence</div>
     <h2>Course Content — Theory</h2>
-    <div class="section-note">5 modules · 6 hours each · 30 hours total. Click a module to expand.</div>
+    <div class="section-note">5 modules · 6 hours each. Click a module to expand.</div>
 
     <details class="module" open>
       <summary><span class="left"><span class="idx">01</span><span class="name">Introduction to Windows PowerShell</span></span><span class="hrs">6 Hrs</span></summary>
@@ -414,6 +492,59 @@ management for Azure services, aligned to the course curriculum.</pre>
   </div>
 </section>
 
+<section id="modules-new" class="alt" data-course="25BCACT314" hidden>
+  <div class="wrap">
+    <div class="eyebrow">Get-Module | Sort-Object Sequence</div>
+    <h2>Course Content — Theory</h2>
+    <div class="section-note">3 units · 12 + 12 + 6 = 30 hours. Click a unit to expand.</div>
+
+    <details class="module" open>
+      <summary><span class="left"><span class="idx">I</span><span class="name">Introduction to Windows PowerShell</span></span><span class="hrs">12 Hrs</span></summary>
+      <div class="body">
+        Getting started with Windows PowerShell: introduction, setting up the lab environment, installing
+        Windows PowerShell, starting and stopping PowerShell, finding available commands, limitations of
+        CMD.exe, the GUI emphasis in Windows, previous attempted solutions.<br><br>
+        The Windows PowerShell approach: a new architecture, a new cross-tool approach, namespaces as
+        drives, extensibility and backward compatibility, the object-based approach in PowerShell,
+        consistent verb-noun naming scheme, the upgrade path to C#, working with errors, debugging in
+        PowerShell, and additional PowerShell features.<br><br>
+        Using the interactive PowerShell: Windows PowerShell's two command-line parsing approaches,
+        exploring the Windows system with Windows PowerShell, using abbreviated commands, working with
+        object pipelines, pros and cons of verbosity, snap-ins, profiles, aliases, prompts, and
+        preference variables. Parameters, and variables as parameters.
+      </div>
+    </details>
+
+    <details class="module">
+      <summary><span class="left"><span class="idx">II</span><span class="name">Cmdlets, Errors and WMI</span></span><span class="hrs">12 Hrs</span></summary>
+      <div class="body">
+        Filtering and formatting output: Where-Object, Select-Object, default formatting, Format-Table,
+        Format-List, Update-FormatData and Update-TypeData cmdlets, Remove-Item, the -WhatIf, -Confirm and
+        -Verbose parameters, Windows PowerShell providers, Get-PSDrive, Set-Location, Get-ChildItem,
+        Get-Location, Get-Content, Measure-Object, New-Item, New-PSDrive.<br><br>
+        Using Windows PowerShell tools for discovery: exploring system state, environment variables, the
+        current application domain, services, and the Get-Service cmdlet.<br><br>
+        Working with errors and exceptions: errors, error-related variables, the Trap statement, common
+        parameters, handling syntax errors, Set-PSDebug, Write-Debug, tracing, path names in Windows
+        PowerShell, and simple tasks with folders and files.<br><br>
+        Working with WMI: introducing Windows Management Instrumentation, WMI essentials, exploring WMI,
+        choosing WMI or CIM, using Get-WmiObject, and using Get-CimInstance.
+      </div>
+    </details>
+
+    <details class="module">
+      <summary><span class="left"><span class="idx">III</span><span class="name">PowerShell DSC</span></span><span class="hrs">6 Hrs</span></summary>
+      <div class="body">
+        Introducing PowerShell DSC: introduction to PowerShell DSC, DSC high-level overview, DSC features,
+        PowerShell V4, V5 and V6 DSC, the PowerShell ISE, partial configurations and dependencies.<br><br>
+        DSC architecture: overview, push and pull modes, the general workflow, the example workflow,
+        configuration data, the Local Configuration Manager, the DSC pull server, and deployment
+        considerations.
+      </div>
+    </details>
+  </div>
+</section>
+
 <section id="practicals">
   <div class="wrap">
     <div class="eyebrow">Get-Practical</div>
@@ -440,7 +571,7 @@ management for Azure services, aligned to the course curriculum.</pre>
   </div>
 </section>
 
-<section id="evaluation" class="alt">
+<section id="evaluation" class="alt" data-course="24PCA412">
   <div class="wrap">
     <div class="eyebrow">Get-Evaluation</div>
     <h2>Course Evaluation System</h2>
@@ -478,6 +609,38 @@ management for Azure services, aligned to the course curriculum.</pre>
   </div>
 </section>
 
+<section id="evaluation-new" class="alt" data-course="25BCACT314" hidden>
+  <div class="wrap">
+    <div class="eyebrow">Get-Evaluation</div>
+    <h2>Course Evaluation System</h2>
+    <div class="section-note">-- CIE 50% · SEE 50% · total 100 marks</div>
+
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Component</th><th>Assessment</th><th>Description</th><th class="center" style="width:90px;">Weightage</th><th class="center" style="width:70px;">Marks</th></tr></thead>
+        <tbody>
+          <tr><td rowspan="6">Continuous Internal Evaluation (CIE)</td><td>CIE-I (MSE-I)</td><td>Mid Semester Examination (MSE) – I (1-hour duration, conducted for 25 marks).</td><td rowspan="3" class="center">15%</td><td rowspan="3" class="center">15</td></tr>
+          <tr><td>CIE-II (MSE-II)</td><td>Mid Semester Examination – II (1-hour duration, conducted for 25 marks).</td></tr>
+          <tr><td>Average of MSE-I &amp; II</td><td>Average of marks scored in CIE-I and CIE-II.</td></tr>
+          <tr><td>CIE-III (Task I)</td><td>Assignments, Quiz, Case Analysis, GD, Article Review, Story Writing, etc.</td><td class="center">10%</td><td class="center">10</td></tr>
+          <tr><td>CIE-IV (Task II)</td><td>Practical Exams, Viva, Record Writing, Practical Tasks.</td><td class="center">20%</td><td class="center">20</td></tr>
+          <tr><td>CIE-V (Participative Learning)</td><td>Participative Learning based marks allocation: ≥90% – 5 marks; 85–89% – 4 marks; 80–84% – 3 marks; 75–79% – 2 marks.</td><td class="center">5%</td><td class="center">5</td></tr>
+          <tr><td>Semester End Evaluation (SEE)</td><td>SEE</td><td>Written examination of 3 hours duration. <em>(SEE will be conducted for 100 marks, which will then be scaled down to 50 marks.)</em></td><td class="center">50%</td><td class="center">50</td></tr>
+          <tr><td colspan="3"><strong>Total</strong></td><td class="center"><strong>100%</strong></td><td class="center"><strong>100</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="codepanel" style="margin-top:14px;">
+      <div class="bar"><div class="dots"><span></span><span></span><span></span></div>question-paper-pattern.ps1</div>
+      <pre><span class="c"># SEE question paper pattern</span>
+<span class="v">$Units</span>             = 3
+<span class="v">$QuestionsPerUnit</span>  = @(3, 3, 2)   <span class="c"># Unit I, Unit II, Unit III</span>
+<span class="v">$MarksPerQuestion</span> = 20          <span class="c"># sub-questions (a, b, c, d) sum to 20</span>
+<span class="v">$AnswerRule</span>        = <span class="s">"Two full questions each from Unit I and II, one full question from Unit III"</span></pre>
+    </div>
+  </div>
+</section>
+
 <section id="resources">
   <div class="wrap">
     <div class="eyebrow">Get-Reading</div>
@@ -501,21 +664,49 @@ management for Azure services, aligned to the course curriculum.</pre>
 </footer>
 
 <script>
-  const line = "Get-Course -Code 24PCA412 -Title \"Automation And Configuration Management\"";
+  const TITLE = "Automation And Configuration Management";
+  const COURSES = ["24PCA412", "25BCACT314"];
   const el = document.getElementById('typed');
-  let i = 0;
-  function type(){
-    if(i <= line.length){
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let timer;
+
+  function typeLine(line){
+    clearTimeout(timer);
+    if (reduceMotion) { el.textContent = line; return; }
+    let i = 0;
+    (function step(){
       el.textContent = line.slice(0, i);
-      i++;
-      setTimeout(type, 18);
-    }
+      if (i < line.length) { i++; timer = setTimeout(step, 18); }
+    })();
   }
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    el.textContent = line;
-  } else {
-    type();
+
+  function initialCourse(){
+    const q = new URLSearchParams(location.search).get('course');
+    if (COURSES.includes(q)) return q;
+    try {
+      const saved = localStorage.getItem('course');
+      if (COURSES.includes(saved)) return saved;
+    } catch (e) {}
+    return COURSES[0];
   }
+
+  function show(code){
+    document.querySelectorAll('[data-course]').forEach(n => { n.hidden = n.dataset.course !== code; });
+    document.querySelectorAll('.switch button').forEach(b => {
+      b.setAttribute('aria-pressed', String(b.dataset.pick === code));
+    });
+    typeLine('Get-Course -Code ' + code + ' -Title "' + TITLE + '"');
+  }
+
+  document.querySelectorAll('.switch button').forEach(b => {
+    b.addEventListener('click', () => {
+      show(b.dataset.pick);
+      try { localStorage.setItem('course', b.dataset.pick); } catch (e) {}
+      try { history.replaceState(null, '', '?course=' + b.dataset.pick); } catch (e) {}
+    });
+  });
+
+  show(initialCourse());
 </script>
 
 </body>
