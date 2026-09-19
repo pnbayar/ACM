@@ -4,7 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Automation And Configuration Management · NITTE</title>
+<meta name="description" content="Course page for 24PCA412 Automation And Configuration Management (Windows PowerShell, Azure Automation, DSC) — NITTE, BCA (Honours).">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230a0e14'/%3E%3Cpath d='M7 9l9 7-9 7' fill='none' stroke='%233a96dd' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M17 23h9' stroke='%236a9955' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
@@ -14,8 +17,8 @@
     --border:#232b38;
     --border-soft:#1a2029;
     --text:#cfd8e3;
-    --muted:#697180;
-    --dim:#4b5361;
+    --muted:#97a1b0;
+    --dim:#7d8797;
     --ps-blue:#3a96dd;
     --ps-blue-dim:#245a86;
     --amber:#e3b341;
@@ -24,7 +27,7 @@
     --red:#e06c75;
   }
   *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: no-preference){ html{scroll-behavior:smooth;} }
   body{
     margin:0;
     background:var(--bg);
@@ -100,7 +103,7 @@
     border-bottom:1px solid var(--border-soft);
   }
   .metastrip div:last-child{border-right:none;}
-  .metastrip label{
+  .metastrip span{
     display:block; font-size:10.5px; text-transform:uppercase;
     letter-spacing:1px; color:var(--dim); margin-bottom:5px;
   }
@@ -230,7 +233,7 @@
 
   /* ---- resources ---- */
   .reslist{display:grid; gap:10px;}
-  .reslist a{
+  .reslist a, .reslist .item{
     display:flex; justify-content:space-between; align-items:center;
     padding:12px 14px;
     border:1px solid var(--border); border-radius:6px;
@@ -267,10 +270,10 @@
       <span>credits&nbsp;3</span>
     </div>
     <div class="metastrip">
-      <div><label>Teaching Hrs (L:T:P)</label><strong>3 : 0 : 2</strong></div>
-      <div><label>Total Hours</label><strong>45 + 0 + 30</strong></div>
-      <div><label>CIE + SEE Marks</label><strong>50 + 50 = 100</strong></div>
-      <div><label>Course Type</label><strong>MNC</strong></div>
+      <div><span>Teaching Hrs (L:T:P)</span><strong>3 : 0 : 2</strong></div>
+      <div><span>Total Hours</span><strong>30 + 0 + 30</strong></div>
+      <div><span>CIE + SEE Marks</span><strong>50 + 50 = 100</strong></div>
+      <div><span>Course Type</span><strong>MNC</strong></div>
     </div>
     <nav class="tabs">
       <a href="#preamble">Preamble</a>
@@ -332,7 +335,7 @@ management for Azure services, aligned to the course curriculum.</pre>
     <div class="tablewrap">
       <table>
         <thead>
-          <tr><th></th><th class="center">PO1</th><th class="center">PO2</th><th class="center">PO3</th><th class="center">PO4</th><th class="center">PO5</th><th class="center">PO6</th><th class="center">PO7</th><th class="center">PO8</th></tr>
+          <tr><th>CO</th><th class="center">PO1</th><th class="center">PO2</th><th class="center">PO3</th><th class="center">PO4</th><th class="center">PO5</th><th class="center">PO6</th><th class="center">PO7</th><th class="center">PO8</th></tr>
         </thead>
         <tbody>
           <tr><td class="id-cell">CO1</td><td class="center"><span class="badge high">3</span></td><td class="center"><span class="badge med">2</span></td><td class="center"><span class="badge high">3</span></td><td class="center"><span class="badge med">2</span></td><td class="center"><span class="badge low">1</span></td><td class="center"><span class="badge none">–</span></td><td class="center"><span class="badge none">–</span></td><td class="center"><span class="badge med">2</span></td></tr>
@@ -418,10 +421,10 @@ management for Azure services, aligned to the course curriculum.</pre>
     <div class="section-note">-- Get-Practical | Sort-Object Id</div>
     <div class="tablewrap">
       <table>
-        <thead><tr><th style="width:44px;">#</th><th>Practical</th><th style="width:110px;">Status</th></tr></thead>
+        <thead><tr><th style="width:56px;">#</th><th>Practical</th><th style="width:110px;">Status</th></tr></thead>
         <tbody>
-          <tr><td class="id-cell">01</td><td>PowerShell basic commands.</td><td><a href="Windows_PowerShell_Lab_Manual_Basic.pdf">Open</a></td></tr>
-          <tr><td class="id-cell">01</td><td>Configuring Windows PowerShell and working with basic commands.</td><td><a href="Configuring Windows PowerShell and Working with Basic Commands.pdf">Open</a></td></tr>
+          <tr><td class="id-cell">01a</td><td>PowerShell basic commands.</td><td><a href="Windows_PowerShell_Lab_Manual_Basic.pdf">Open</a></td></tr>
+          <tr><td class="id-cell">01b</td><td>Configuring Windows PowerShell and working with basic commands.</td><td><a href="Configuring%20Windows%20PowerShell%20and%20Working%20with%20Basic%20Commands.pdf">Open</a></td></tr>
           <tr><td class="id-cell">02</td><td>Working with objects and controlling program flow (if, switch, while, for, foreach).</td><td>scheduled</td></tr>
           <tr><td class="id-cell">03</td><td>Working with file and pipeline parameter binding.</td><td>scheduled</td></tr>
           <tr><td class="id-cell">04</td><td>Working with PS providers and PS drives.</td><td>scheduled</td></tr>
@@ -441,35 +444,36 @@ management for Azure services, aligned to the course curriculum.</pre>
   <div class="wrap">
     <div class="eyebrow">Get-Evaluation</div>
     <h2>Course Evaluation System</h2>
-    <div class="section-note">-- CIE (Theory) 50% · CIE (Practical) 50% · SEE 50% weightage of total marks</div>
+    <div class="section-note">-- CIE = 50% of total (split equally between Theory and Practical) · SEE = 50%</div>
 
     <div class="tablewrap">
       <table>
         <thead><tr><th>System</th><th>Component</th><th>Description</th><th class="center" style="width:90px;">Weight</th><th class="center" style="width:70px;">Marks</th></tr></thead>
         <tbody>
-          <tr><td rowspan="5">Theory CIE</td><td>CIE-I</td><td>Mid-Semester Exam I — 1 hour, 25 marks.</td><td class="center">–</td><td rowspan="5" class="center">50</td></tr>
+          <tr><td rowspan="6">Theory CIE</td><td>CIE-I</td><td>Mid-Semester Exam I — 1 hour, 25 marks.</td><td class="center">–</td><td rowspan="6" class="center">50</td></tr>
           <tr><td>CIE-II</td><td>Mid-Semester Exam II — 1 hour, 25 marks.</td><td class="center">–</td></tr>
           <tr><td>—</td><td>Average of MSE-I and MSE-II.</td><td class="center">25</td></tr>
           <tr><td>CIE-III</td><td>Assignments / quizzes / case analysis.</td><td class="center">10</td></tr>
           <tr><td>CIE-IV</td><td>Publications / seminar / quiz, etc.</td><td class="center">10</td></tr>
-          <tr><td></td><td>CIE-V</td><td>Attendance*</td><td class="center">5</td><td class="center">—</td></tr>
+          <tr><td>CIE-V</td><td>Attendance*</td><td class="center">5</td></tr>
           <tr><td colspan="3"><strong>CIE (Theory)</strong></td><td class="center"><strong>50%</strong></td><td class="center"><strong>25M</strong></td></tr>
-          <tr><td rowspan="1">Practical CIE</td><td>CIE-VI</td><td>Practical test(s), 30 marks: Write-up 25%, Execution 35%, Modification/Testing 25%, Viva 15%; plus continuous evaluation via record write-up &amp; viva (20 marks).</td><td class="center">50</td><td class="center">—</td></tr>
+          <tr><td>Practical CIE</td><td>CIE-VI</td><td>Practical test(s), 30 marks: Write-up 25%, Execution 35%, Modification/Testing 25%, Viva 15%; plus continuous evaluation via record write-up &amp; viva (20 marks).</td><td class="center">50</td><td class="center">—</td></tr>
           <tr><td colspan="3"><strong>CIE (Practical)</strong></td><td class="center"><strong>50%</strong></td><td class="center"><strong>25M</strong></td></tr>
-          <tr><td>SEE</td><td>SEE</td><td>Written examination, 3 hours duration.</td><td class="center">50%</td><td class="center">*50M</td></tr>
+          <tr><td>SEE</td><td>SEE</td><td>Written examination, 3 hours duration.</td><td class="center">50%</td><td class="center">50M†</td></tr>
           <tr><td colspan="3"><strong>Total Marks</strong></td><td class="center"><strong>100%</strong></td><td class="center"><strong>100</strong></td></tr>
         </tbody>
       </table>
     </div>
     <div class="section-note" style="margin-top:14px;">
-      * Attendance marks: 90%+ → 5 · 85–89% → 4 · 80–84% → 3 · 75–79% → 2
+      * Attendance marks: 90%+ → 5 · 85–89% → 4 · 80–84% → 3 · 75–79% → 2<br>
+      † SEE paper is set for 100 marks and scaled down to 50.
     </div>
     <div class="codepanel" style="margin-top:14px;">
       <div class="bar"><div class="dots"><span></span><span></span><span></span></div>question-paper-pattern.ps1</div>
       <pre><span class="c"># Question paper pattern</span>
-<span class="v">$Modules</span>     = 5
+<span class="v">$Modules</span>            = 5
 <span class="v">$QuestionsPerModule</span> = 2      <span class="c"># each worth 20 marks</span>
-<span class="v">$AnswerRule</span>  = <span class="s">"Answer 5 questions — one FULL question from each module"</span></pre>
+<span class="v">$AnswerRule</span>         = <span class="s">"Answer 5 questions — one FULL question from each module"</span></pre>
     </div>
   </div>
 </section>
@@ -481,8 +485,8 @@ management for Azure services, aligned to the course curriculum.</pre>
     <div class="section-note">-- textbooks and reference documentation</div>
     <div class="reslist">
       <a href="https://drive.google.com/file/d/1mIoSGyM5vgu0aUxoacdTPD1L8umeXj3o/view?usp=sharing">Lab Manual — Automation And Configuration Management <span class="tag">Lab manual · PDF</span></a>
-      <a href="#" onclick="return false;">Professional Windows® PowerShell — A. Watt (Wrox, 2007) <span class="tag">Textbook · ISBN 978-0470140002</span></a>
-      <a href="#" onclick="return false;">Learning PowerShell DSC, 2nd Ed. — J. Pogran (Packt, 2017) <span class="tag">Textbook</span></a>
+      <div class="item">Professional Windows® PowerShell — A. Watt (Wrox, 2007) <span class="tag">Textbook · ISBN 978-0470140002</span></div>
+      <div class="item">Learning PowerShell DSC, 2nd Ed. — J. Pogran (Packt, 2017) <span class="tag">Textbook</span></div>
       <a href="https://learn.microsoft.com/en-us/powershell/" target="_blank" rel="noopener">Microsoft PowerShell Documentation <span class="tag">Official docs · Microsoft</span></a>
       <a href="https://learn.microsoft.com/pdf?url=https%3A%2F%2Flearn.microsoft.com%2Fen-us%2Fpowershell%2Fscripting%2Ftoc.json%3Fview%3Dpowershell-7.6" target="_blank" rel="noopener">PowerShell TOC (PDF) <span class="tag">PDF · Microsoft</span></a>
     </div>
