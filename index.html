@@ -44,9 +44,8 @@
 
   /* ---- top prompt bar ---- */
   .promptbar{
-    border-bottom:1px solid var(--border);
     background:linear-gradient(180deg, #0d1220, #0a0e14);
-    padding:22px 0 18px;
+    padding:22px 0 8px;
   }
   .promptline{
     color:var(--green);
@@ -110,12 +109,18 @@
   .metastrip strong{color:#eef2f7; font-size:13.5px; font-weight:600;}
 
   /* ---- nav ---- */
-  nav.tabs{
-    display:flex; gap:2px; flex-wrap:wrap;
+  .stickybar{
+    position:sticky; top:0; z-index:10;
+    background:var(--bg);
     border-bottom:1px solid var(--border);
-    margin-top:8px;
+  }
+  nav.tabs{
+    display:flex; gap:2px;
+    overflow-x:auto;
+    padding-top:6px;
   }
   nav.tabs a{
+    white-space:nowrap;
     padding:9px 16px;
     font-size:12.5px;
     color:var(--muted);
@@ -127,7 +132,7 @@
   nav.tabs a::before{content:"› "; color:var(--ps-blue);}
 
   /* ---- sections ---- */
-  section{padding:44px 0;}
+  section{padding:44px 0; scroll-margin-top:96px;}
   section.alt{background:var(--panel-alt); border-top:1px solid var(--border-soft); border-bottom:1px solid var(--border-soft);}
   .eyebrow{
     font-size:11.5px; letter-spacing:2px; text-transform:uppercase;
@@ -255,7 +260,7 @@
   .sep{border-left:1px solid var(--border);}
 
   /* ---- syllabus switcher (needs JS, so it stays hidden without it) ---- */
-  .switch{display:none; gap:6px; flex-wrap:wrap; margin:0 0 16px;}
+  .switch{display:none; gap:6px; flex-wrap:wrap; margin:0; padding-top:10px;}
   .js .switch{display:flex;}
   .switch button{
     font:inherit; font-size:12.5px; cursor:pointer;
@@ -277,10 +282,6 @@
     </div>
     <h1 class="title">Automation And Configuration Management</h1>
     <div class="subtitle">Windows PowerShell · Azure Automation · Desired State Configuration</div>
-    <div class="switch" role="group" aria-label="Syllabus version">
-      <button type="button" data-pick="24PCA412" aria-pressed="true">24PCA412 · 2022 batch</button>
-      <button type="button" data-pick="25BCACT314" aria-pressed="false">25BCACT314 · new batch</button>
-    </div>
     <div class="status-row">
       <span><span class="dot"></span>session connected</span>
       <span data-course="24PCA412">course&nbsp;24PCA412</span>
@@ -301,6 +302,15 @@
       <div><span>Total Hours (L-T-P-J)</span><strong>30 + 0 + 30 + 0</strong></div>
       <div><span>CIE + SEE Marks</span><strong>50 + 50 = 100</strong></div>
       <div><span>Course Type</span><strong>MNC</strong></div>
+    </div>
+  </div>
+</div>
+
+<div class="stickybar">
+  <div class="wrap">
+    <div class="switch" role="group" aria-label="Syllabus version">
+      <button type="button" data-pick="24PCA412" aria-pressed="true">24PCA412 · 2022 batch</button>
+      <button type="button" data-pick="25BCACT314" aria-pressed="false">25BCACT314 · new batch</button>
     </div>
     <nav class="tabs" data-course="24PCA412">
       <a href="#preamble">Preamble</a>
