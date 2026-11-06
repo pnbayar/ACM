@@ -269,6 +269,14 @@
   }
   .switch button:hover{color:var(--text);}
   .switch button[aria-pressed="true"]{border-color:var(--ps-blue); background:var(--panel-alt); color:var(--text);}
+
+  /* ---- tabbed sections (JS only; without JS every section shows as one long page) ---- */
+  .js section.tab-off{display:none;}
+  .js section{min-height:60vh;}
+  nav.tabs a[aria-selected="true"]{
+    color:#f0f4f9; background:var(--panel-alt);
+    border-color:var(--border); text-decoration:none;
+  }
 </style>
 <script>document.documentElement.classList.add('js');</script>
 </head>
@@ -746,7 +754,51 @@ management for Azure services, aligned to the course curriculum.</pre>
     });
   });
 
+  // ---- tabbed sections ----
+  // Only the section picked in the tab row is shown. Both syllabus tab rows list
+  // their sections in the same order, so switching syllabus keeps the same tab.
+  const sections = Array.from(document.querySelectorAll('section[id]'));
+  let tabIndex = 0;
+
+  function visibleTabs(){
+    const nav = document.querySelector('nav.tabs:not([hidden])');
+    return nav ? Array.from(nav.querySelectorAll('a[href^="#"]')) : [];
+  }
+
+  function selectTab(i, scroll){
+    const tabs = visibleTabs();
+    if (!tabs.length) return;
+    tabIndex = Math.max(0, Math.min(i, tabs.length - 1));
+    const id = tabs[tabIndex].getAttribute('href').slice(1);
+    sections.forEach(s => s.classList.toggle('tab-off', s.id !== id));
+    document.querySelectorAll('nav.tabs a[href^="#"]').forEach(a => a.removeAttribute('aria-selected'));
+    tabs[tabIndex].setAttribute('aria-selected', 'true');
+    if (scroll) {
+      // If the header has scrolled away, bring the new tab's top back under the pinned bar.
+      const top = document.querySelector('.promptbar').offsetHeight;
+      if (window.scrollY > top) window.scrollTo({ top: top });
+    }
+  }
+
+  document.querySelectorAll('nav.tabs a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const i = visibleTabs().indexOf(a);
+      selectTab(i, true);
+      try { history.replaceState(null, '', location.search + a.getAttribute('href')); } catch (err) {}
+    });
+  });
+
+  // Re-run the syllabus switch so the same tab stays selected in the other syllabus.
+  const showCourse = show;
+  show = function(code){ showCourse(code); selectTab(tabIndex, false); };
+
+  // Open on the tab named in the URL (#modules etc.), otherwise on Course Materials & Resources.
+  const DEFAULT_TAB = '#resources';
   show(initialCourse());
+  const tabs0 = visibleTabs().map(a => a.getAttribute('href'));
+  const fromHash = tabs0.indexOf(location.hash);
+  selectTab(fromHash >= 0 ? fromHash : Math.max(0, tabs0.indexOf(DEFAULT_TAB)), false);
 </script>
 
 </body>
